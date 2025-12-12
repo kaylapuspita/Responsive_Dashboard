@@ -1,50 +1,72 @@
-# Welcome to your Expo app 👋
+# 📱 Responsive Dashboard UI (React Native Expo)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Proyek ini adalah implementasi antarmuka (UI) Dashboard yang **responsif** menggunakan React Native dan Expo. Layout aplikasi akan beradaptasi secara otomatis berdasarkan ukuran layar atau orientasi perangkat.
 
-## Get started
+- **Mobile (Portrait):** Tampilan daftar vertikal (List View).
+- **Tablet / Landscape:** Tampilan grid 2 kolom (Grid View).
 
-1. Install dependencies
+## ✨ Fitur Utama
 
-   ```bash
-   npm install
-   ```
+*   🚀 **Responsive Layout:** Menggunakan `useWindowDimensions` dan Flexbox `wrap`.
+*   🌙 **Dark Mode UI:** Tema warna gelap yang modern dan nyaman di mata.
+*   📐 **Orientation Support:** Mendukung rotasi layar (Portrait & Landscape).
+*   💎 **TypeScript:** Kode ditulis dengan `.tsx` untuk keamanan tipe data yang lebih baik.
 
-2. Start the app
+## 🛠️ Tech Stack
 
-   ```bash
-   npx expo start
-   ```
+*   [React Native](https://reactnative.dev/)
+*   [Expo](https://expo.dev/)
+*   [TypeScript](https://www.typescriptlang.org/)
 
-In the output, you'll find options to open the app in a
+## 🚀 Cara Menjalankan Projek
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+1.  **Masuk ke folder proyek:**
+    ```bash
+    cd responsive_dashboard
+    ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+2.  **Install Dependencies:**
+    ```bash
+    npm install
+    ```
 
-## Get a fresh project
+3.  **Jalankan Server Expo:**
+    ```bash
+    npx expo start
+    ```
 
-When you're ready, run:
+4.  **Buka Aplikasi:**
+    *   Scan QR Code yang muncul di terminal menggunakan aplikasi **Expo Go** (Android/iOS).
+    *   Tekan `a` untuk membuka di Android Emulator.
+    *   Tekan `i` untuk membuka di iOS Simulator.
 
-```bash
-npm run reset-project
-```
+## 📝 Konfigurasi Penting
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 1. Mengaktifkan Rotasi Layar
+Agar aplikasi bisa merespons saat HP dimiringkan, pastikan konfigurasi di file `app.json` sudah diatur ke `default`:
 
-## Learn more
+```json
+{
+  "expo": {
+    "orientation": "default"
+  }
+}
+2. Logika Responsif
+Logika utama untuk menentukan tampilan Tablet vs Mobile terdapat di App.tsx.
+Aplikasi akan berubah menjadi tampilan Tablet jika lebar layar lebih dari 600px atau lebar layar lebih besar dari tingginya (Landscape).
+code
+Tsx
+const { width, height } = useWindowDimensions();
+const isTablet = width > 600 || width > height;
 
-To learn more about developing your project with Expo, look at the following resources:
+// Style lebar kartu: (Tablet: 48%, Mobile: 100%)
+width: isTablet ? '48%' : '100%'
+🐛 Troubleshooting
+Jika Anda mengalami error saat instalasi (seperti EPERM atau ECONNRESET), coba langkah berikut:
+Hapus folder node_modules dan file package-lock.json.
+Bersihkan cache: npm cache clean --force.
+Install ulang: npm install.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Dibuat oleh 
+Kayla Puspita Khairiyah.
