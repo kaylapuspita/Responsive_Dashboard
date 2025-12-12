@@ -51,22 +51,21 @@ Agar aplikasi bisa merespons saat HP dimiringkan, pastikan konfigurasi di file `
     "orientation": "default"
   }
 }
+
+
 2. Logika Responsif
 Logika utama untuk menentukan tampilan Tablet vs Mobile terdapat di App.tsx.
 Aplikasi akan berubah menjadi tampilan Tablet jika lebar layar lebih dari 600px atau lebar layar lebih besar dari tingginya (Landscape).
-code
-Tsx
+
 const { width, height } = useWindowDimensions();
 const isTablet = width > 600 || width > height;
 
 // Style lebar kartu: (Tablet: 48%, Mobile: 100%)
 width: isTablet ? '48%' : '100%'
+
+
 🐛 Troubleshooting
 Jika Anda mengalami error saat instalasi (seperti EPERM atau ECONNRESET), coba langkah berikut:
 Hapus folder node_modules dan file package-lock.json.
 Bersihkan cache: npm cache clean --force.
 Install ulang: npm install.
-
-
-Dibuat oleh 
-Kayla Puspita Khairiyah.
